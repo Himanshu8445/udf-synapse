@@ -49,9 +49,7 @@ jobs:
     name: Deploy_Artifacts_Test_Env
     needs: Publish_Artifacts
     uses: ./.github/workflows/testworkflow.yml
-    with:
-      environment: test
-    secrets:
+    env:
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       TENANT_ID: ${{ secrets.TENANT_ID }}
       CLIENT_ID: ${{ secrets.CLIENT_ID }}
