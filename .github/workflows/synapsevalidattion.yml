@@ -40,7 +40,7 @@ jobs:
       # Check Out Repository
       - name: Check Out Repository
         id: checkout_repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.5.2
@@ -48,7 +48,7 @@ jobs:
       # Validate Synapse Artifacts
       - name: Validate Synapse Artifacts
         id: validation_synapse
-        uses: azure/synapse-workspace-deployment@V1.7.0
+        uses: azure/synapse-workspace-deployment@release-1.0
         with:
           TargetWorkspaceName: ${{ inputs.source_synapse_workspace_name }}
           ArtifactsFolder: ${{ github.workspace }}/code/synapse
