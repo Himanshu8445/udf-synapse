@@ -43,4 +43,5 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
            name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
-           path: /home/runner/work/udf-synapse/udf-synapse/ExportedArtifacts
+           #path: /home/runner/work/udf-synapse/udf-synapse/ExportedArtifacts
+           path: path/to/artifact/
