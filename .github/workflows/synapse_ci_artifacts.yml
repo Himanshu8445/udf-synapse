@@ -1,4 +1,4 @@
-name: Synapse Validation Template
+name: Synapse Artifacts Deployment
 
 on:
   push:
