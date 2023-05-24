@@ -49,7 +49,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
-          path: ${{ github.workspace }}/code/synapse
+          path: /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts
 
       # # Install Required Modules
       # - name: Install Required Modules
@@ -77,7 +77,7 @@ jobs:
         uses: azure/synapse-workspace-deployment@V1.7.0
         with:
           TargetWorkspaceName: ${{ secrets.TEST_SYNAPSE_WORKSPACE_NAME }}
-          TemplateFile: ${{ github.workspace }}/code/synapse/TemplateForWorkspace.json
+          TemplateFile: /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts/TemplateForWorkspace.json
           ParametersFile: ${{ github.workspace }}/code/synapseParameters/param.test.json
           # ArtifactsFolder:
           operation: "deploy"
