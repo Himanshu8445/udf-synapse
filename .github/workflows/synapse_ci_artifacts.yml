@@ -40,8 +40,7 @@ jobs:
           DeleteArtifactsNotInTemplate: false
 
       - name: Upload Synapse template as artifacts
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@main
         with:
            name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
-           #path: /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts
-           path: ${{ github.workspace }}/code/synapse
+           path: /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts
