@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-    - "code/synapse"
+    - 'code/synapse'
 
 jobs:
   Publish_Artifacts:
