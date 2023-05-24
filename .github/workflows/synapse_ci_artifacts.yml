@@ -45,14 +45,14 @@ jobs:
            name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
            path: /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts
 
-      - name: push
-        uses: actions-x/commit@v6
-        with:
-          #email: me@example.com
-          #name: GitHub Actions Autocommitter
-          branch: publish
-          files: /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts/TemplateForWorkspace.json /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts/TemplateParametersForWorkspace.json 
-          repository: https://github.com/Himanshu8445/udf-synapse
-          #token: ${{ secrets.MY_SECRET_TOKEN }}
-          force: true
-          #directory: path/to/different/repo
+      # - name: push
+      #   uses: actions-x/commit@v6
+      #   with:
+      #     #email: me@example.com
+      #     #name: GitHub Actions Autocommitter
+      #     branch: publish
+      #     files: /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts/TemplateForWorkspace.json /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts/TemplateParametersForWorkspace.json 
+      #     repository: https://github.com/Himanshu8445/udf-synapse
+      #     #token: ${{ secrets.MY_SECRET_TOKEN }}
+      #     force: true
+      #     #directory: path/to/different/repo
