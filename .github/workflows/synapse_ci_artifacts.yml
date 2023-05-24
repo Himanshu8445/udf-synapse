@@ -1,10 +1,10 @@
-name: Synapse Artifacts Deployment
+name: Synapse Artifacts Publish
 
 on:
   push:
     branches: [main]
     paths:
-    - 'code/**'
+    - "code/synapse"
 
 jobs:
   Publish_Artifacts:
@@ -44,29 +44,3 @@ jobs:
         with:
            name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
            path: /home/runner/work/udf-synapse/udf-synapse/ExportedArtifacts
-  
-  Deploy_Artifacts_Test_Env:
-    name: Deploy_Artifacts_Test_Env
-    needs: Publish_Artifacts
-    uses: ./.github/workflows/testworkflow.yml
-    secrets:
-      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      TENANT_ID: ${{ secrets.TENANT_ID }}
-      CLIENT_ID: ${{ secrets.CLIENT_ID }}
-      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-      TEST_SYNAPSE_WORKSPACE_NAME: ${{ secrets.TEST_SYNAPSE_WORKSPACE_NAME }}
-      TEST_AZURE_RESOURCE_GROUP_NAME: ${{ secrets.TEST_AZURE_RESOURCE_GROUP_NAME }}
-      DEV_SYNAPSE_WORKSPACE_NAME: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
-  
-  Deploy_Artifacts_Pre_Prod_Env:
-    name: Deploy_Artifacts_Pre_Prod_Env
-    needs: Deploy_Artifacts_Test_Env
-    uses: ./.github/workflows/preprodworkflow.yml
-    secrets:
-      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      TENANT_ID: ${{ secrets.TENANT_ID }}
-      CLIENT_ID: ${{ secrets.CLIENT_ID }}
-      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-      PP_SYNAPSE_WORKSPACE_NAME: ${{ secrets.PP_SYNAPSE_WORKSPACE_NAME }}
-      PP_AZURE_RESOURCE_GROUP_NAME: ${{ secrets.PP_AZURE_RESOURCE_GROUP_NAME }}
-      DEV_SYNAPSE_WORKSPACE_NAME: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
