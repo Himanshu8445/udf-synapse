@@ -1,4 +1,4 @@
-name: Synapse Artifacts Publish
+name: Synapse Publish Artifacts
 
 on:
   workflow_call:
