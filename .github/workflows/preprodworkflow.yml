@@ -1,4 +1,4 @@
-name: Synapse Artifacts Deployment Test
+name: Synapse Artifacts Deployment Pre Prod
 
 on:
   workflow_call:
@@ -15,22 +15,22 @@ on:
       CLIENT_SECRET:
         required: true
         description: "Specifies the azure credentials for deployment."
-      TEST_SYNAPSE_WORKSPACE_NAME:
+      PP_SYNAPSE_WORKSPACE_NAME:
         required: true
-        description: "Specifies the test synapse workspace name for deployment."
-      TEST_AZURE_RESOURCE_GROUP_NAME:
+        description: "Specifies the pre-prod synapse workspace name for deployment."
+      PP_AZURE_RESOURCE_GROUP_NAME:
         required: true
-        description: "Specifies the test synapse workspace name for deployment."
+        description: "Specifies the pre-prod synapse workspace name for deployment."
       DEV_SYNAPSE_WORKSPACE_NAME:
         required: true
         description: "Specifies the dev synapse workspace name for deployment."
 
 jobs:
   deployment:
-    name: Deployment to test
+    name: Deployment to pre-prod
     runs-on: ubuntu-latest
     continue-on-error: false
-    environment: test
+    environment: preprod
 
     steps:
       # Check Out Repository
@@ -66,7 +66,7 @@ jobs:
         run: |
           ./SynapseRolloutPreprocessing.ps1 `
             -SubscriptionId "${{ secrets.AZURE_SUBSCRIPTION_ID }}" `
-            -SynapseWorkspaceName "${{ secrets.TEST_SYNAPSE_WORKSPACE_NAME }}" `
+            -SynapseWorkspaceName "${{ secrets.PP_SYNAPSE_WORKSPACE_NAME }}" `
             -CheckPastDaysOfPipelineRuns 1
         shell: pwsh
         working-directory: ${{ github.workspace }}/code/Scripts
@@ -76,16 +76,16 @@ jobs:
         id: deployment_synapse
         uses: azure/synapse-workspace-deployment@V1.7.0
         with:
-          TargetWorkspaceName: ${{ secrets.TEST_SYNAPSE_WORKSPACE_NAME }}
+          TargetWorkspaceName: ${{ secrets.PP_SYNAPSE_WORKSPACE_NAME }}
           TemplateFile: ${{ github.workspace }}/code/synapse/TemplateForWorkspace.json
-          ParametersFile: ${{ github.workspace }}/code/synapseParameters/param.test.json
+          ParametersFile: ${{ github.workspace }}/code/synapseParameters/param.preprod.json
           # ArtifactsFolder:
           operation: "deploy"
           deployManagedPrivateEndpoint: true
           # OverrideArmParameters:
           DeleteArtifactsNotInTemplate: false
           Environment: "Azure Public"
-          resourceGroup: ${{ secrets.TEST_AZURE_RESOURCE_GROUP_NAME }}
+          resourceGroup: ${{ secrets.PP_AZURE_RESOURCE_GROUP_NAME }}
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenantId: ${{ secrets.TENANT_ID }}          
           clientId: ${{ secrets.CLIENT_ID }}
@@ -98,7 +98,7 @@ jobs:
         run: |
           ./SynapseRolloutPostprocessing.ps1 `
             -SubscriptionId "${{ secrets.AZURE_SUBSCRIPTION_ID }}" `
-            -SynapseWorkspaceName "${{ secrets.TEST_SYNAPSE_WORKSPACE_NAME }}" `
+            -SynapseWorkspaceName "${{ secrets.PP_SYNAPSE_WORKSPACE_NAME }}" `
             -TriggerNames "${{ steps.synapse_preprocessing.outputs.triggerNames }}"
         shell: pwsh
         working-directory: ${{ github.workspace }}/code/Scripts
