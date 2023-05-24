@@ -49,7 +49,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
-          #path: ${{ github.workspace }}/code/synapse
+          path: ${{ github.workspace }}/code/synapse
 
       # Install Required Modules
       - name: Install Required Modules
