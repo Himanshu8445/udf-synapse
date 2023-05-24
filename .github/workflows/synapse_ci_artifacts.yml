@@ -49,5 +49,3 @@ jobs:
     name: Deploy_Artifacts_Test_Env
     needs: Publish_Artifacts
     uses: ./.github/workflows/testworkflow.yml
-    with:
-      environment: test
