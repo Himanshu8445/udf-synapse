@@ -39,8 +39,8 @@ jobs:
           deployManagedPrivateEndpoint: true
           DeleteArtifactsNotInTemplate: false
 
-      # - name: Upload Synapse template as artifacts
-      #   uses: actions/upload-artifact@v3.1.2
-      #   with:
-      #      name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
-      #      path: /home/runner/work/udf-synapse/udf-synapse/ExportedArtifacts
+      - name: Upload Synapse template as artifacts
+        uses: actions/upload-artifact@v3.1.2
+        with:
+           name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
+           path: /home/runner/work/udf-synapse/udf-synapse/ExportedArtifacts

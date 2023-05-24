@@ -50,6 +50,7 @@ jobs:
         with:
           name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
           path: ${{ github.workspace }}/code/synapse
+          runVersion: 'latest'
 
       # Install Required Modules
       - name: Install Required Modules
