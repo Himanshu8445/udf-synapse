@@ -26,7 +26,7 @@ on:
         description: "Specifies DEV azure resource group name"
 
 jobs:
-  Publish Artifacts:
+  Publish_Artifacts:
     name: Publish artifacts for dev
     runs-on: ubuntu-latest
     continue-on-error: false
