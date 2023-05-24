@@ -42,7 +42,7 @@ jobs:
         uses: actions/setup-node@v2.5.2
 
       # Validate Synapse Artifacts
-      - name: Validate Synapse Artifacts
+      - name: Publish Artifacts
         id: validation_synapse
         uses: azure/synapse-workspace-deployment@V1.7.0
         with:
