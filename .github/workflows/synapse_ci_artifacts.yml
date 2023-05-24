@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-    - 'code/synapse/**'
+    - 'code/**'
 
 jobs:
   Publish_Artifacts:
@@ -43,4 +43,5 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
            name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
-           path: /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts
+           #path: /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts
+           path: ${{ github.workspace }}
