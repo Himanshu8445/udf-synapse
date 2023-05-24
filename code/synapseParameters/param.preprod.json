@@ -56,13 +56,13 @@
             "value": "Built-in"
         },
         "Notebook 1_properties_bigDataPool_bigDataPoolReference": {
-            "value": "testpool"
+            "value": "preprodpool"
         },
         "Notebook 2_properties_bigDataPool_bigDataPoolReference": {
-            "value": "testpool"
+            "value": "preprodpool"
         },
         "Notebook 4_properties_bigDataPool_bigDataPoolReference": {
-            "value": "testpool"
+            "value": "preprodpool"
         }
     }
 }
