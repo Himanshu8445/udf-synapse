@@ -16,16 +16,16 @@ on:
         required: true
         description: "Specifies the name of the resource group for the deployment."
     secrets:
-      azure_subscription_id:
+      AZURE_SUBSCRIPTION_ID:
         required: true
         description: "Specifies the subscription id of the deployment."
-      tenant_id:
+      TENANT_ID:
         required: true
         description: "Specifies the tenant id of the deployment."
-      client_id:
+      CLIENT_ID:
         required: true
         description: "Specifies the client id."
-      client_secret:
+      CLIENT_SECRET:
         required: true
         description: "Specifies the client secret."
 
