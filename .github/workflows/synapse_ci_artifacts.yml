@@ -44,4 +44,4 @@ jobs:
         with:
            name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
            #path: /home/runner/work/udf-synapse/udf-synapse/ExportedArtifacts
-           path: path/to/artifact/
+           path: ${{ github.workspace }}/Artifacts
