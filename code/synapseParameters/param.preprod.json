@@ -1,0 +1,68 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "value": "pp-synapse-eu2-001"
+        },
+        "dev-synapse-eu2-001-WorkspaceDefaultSqlServer_connectionString": {
+            "value": ""
+        },
+        "dev-synapse-eu2-001-WorkspaceDefaultSqlServer_properties_parameters_DBName": {
+            "value": {
+                "type": "String"
+            }
+        },
+        "dev-synapse-eu2-001-WorkspaceDefaultSqlServer_properties_typeProperties_connectionString": {
+            "value": ""
+        },
+        "dev-synapse-eu2-001-WorkspaceDefaultStorage_properties_typeProperties_blobEndpointUri": {
+            "value": "https://ppsynwstreus2001.dfs.core.windows.net"
+        },
+        "SQL script 1_properties_content_currentConnection_databaseName": {
+            "value": "master"
+        },
+        "SQL script 1_properties_content_currentConnection_poolName": {
+            "value": "Built-in"
+        },
+        "SQL script 2_properties_content_currentConnection_databaseName": {
+            "value": "master"
+        },
+        "SQL script 2_properties_content_currentConnection_poolName": {
+            "value": "Built-in"
+        },
+        "SQL script 3_properties_content_currentConnection_databaseName": {
+            "value": "master"
+        },
+        "SQL script 3_properties_content_currentConnection_poolName": {
+            "value": "Built-in"
+        },
+        "SQL script 4_properties_content_currentConnection_databaseName": {
+            "value": "master"
+        },
+        "SQL script 4_properties_content_currentConnection_poolName": {
+            "value": "Built-in"
+        },
+        "SQL script 5_properties_content_currentConnection_databaseName": {
+            "value": "master"
+        },
+        "SQL script 5_properties_content_currentConnection_poolName": {
+            "value": "Built-in"
+        },
+        "SQL script 6_properties_content_currentConnection_databaseName": {
+            "value": "master"
+        },
+        "SQL script 6_properties_content_currentConnection_poolName": {
+            "value": "Built-in"
+        },
+        "Notebook 1_properties_bigDataPool_bigDataPoolReference": {
+            "value": "testpool"
+        },
+        "Notebook 2_properties_bigDataPool_bigDataPoolReference": {
+            "value": "testpool"
+        },
+        "Notebook 4_properties_bigDataPool_bigDataPoolReference": {
+            "value": "testpool"
+        }
+    }
+}
