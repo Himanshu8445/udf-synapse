@@ -52,6 +52,6 @@ jobs:
         with:
           TargetWorkspaceName: ${{ inputs.source_synapse_workspace_name }}
           ArtifactsFolder: ${{ github.workspace }}/code/synapse
-          operation: "Validate"
+          operation: "validate"
           deployManagedPrivateEndpoint: true
           DeleteArtifactsNotInTemplate: false
