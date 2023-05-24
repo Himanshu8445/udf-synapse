@@ -44,9 +44,6 @@ jobs:
         with:
            name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
            path: /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts
-      
-      - name: checkout
-        uses: actions/checkout@v3
 
       - name: push
         uses: actions-x/commit@v6
