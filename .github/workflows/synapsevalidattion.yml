@@ -1,20 +1,10 @@
 name: Synapse Validation Template
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        required: true
-        type: string
-        default: "dev"
-        description: "Specifies the environment of the deployment."
-      source_synapse_workspace_name:
-        required: true
-        type: string
-        description: "Specifies the name of the synapse workspace."
-      azure_resource_group_name:
-        required: true
-        description: "Specifies the name of the resource group for the deployment."
+  push:
+    branches: [main]
+    paths:
+    - 'code/**'
     secrets:
       AZURE_SUBSCRIPTION_ID:
         required: true
@@ -28,13 +18,19 @@ on:
       CLIENT_SECRET:
         required: true
         description: "Specifies the client secret."
+      DEV_SYNAPSE_WORKSPACE_NAME:
+        required: true
+        description: "Specifies DEV synapse workspace name."
+      DEV_AZURE_RESOURCE_GROUP_NAME:
+        required: true
+        description: "Specifies DEV azure resource group name"
 
 jobs:
   deployment:
-    name: Validation for ${{ inputs.environment }}
+    name: Validation for dev
     runs-on: ubuntu-latest
     continue-on-error: false
-    environment: ${{ inputs.environment }}
+    environment: dev
 
     steps:
       # Check Out Repository
@@ -50,8 +46,9 @@ jobs:
         id: validation_synapse
         uses: azure/synapse-workspace-deployment@V1.7.0
         with:
-          TargetWorkspaceName: ${{ inputs.source_synapse_workspace_name }}
+          TargetWorkspaceName: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
           ArtifactsFolder: ${{ github.workspace }}/code/synapse
+          resourceGroup: ${{ secrets.DEV_AZURE_RESOURCE_GROUP_NAME }}
           operation: "validate"
           deployManagedPrivateEndpoint: true
           DeleteArtifactsNotInTemplate: false
@@ -59,5 +56,5 @@ jobs:
       - name: Upload Synapse template as artifacts
         uses: actions/upload-artifact@v3.1.2
         with:
-           name: ${{ inputs.source_synapse_workspace_name }}
+           name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
            path: /home/runner/work/udf-synapse/udf-synapse/ExportedArtifacts
