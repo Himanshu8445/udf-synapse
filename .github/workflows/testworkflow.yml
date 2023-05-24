@@ -15,6 +15,15 @@ on:
       CLIENT_SECRET:
         required: true
         description: "Specifies the azure credentials for deployment."
+      TEST_SYNAPSE_WORKSPACE_NAME:
+        required: true
+        description: "Specifies the test synapse workspace name for deployment."
+      TEST_AZURE_RESOURCE_GROUP_NAME:
+        required: true
+        description: "Specifies the test synapse workspace name for deployment."
+      DEV_SYNAPSE_WORKSPACE_NAME:
+        required: true
+        description: "Specifies the test synapse workspace name for deployment."
 
 jobs:
   deployment:
