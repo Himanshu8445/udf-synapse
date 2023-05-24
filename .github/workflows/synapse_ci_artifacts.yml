@@ -5,29 +5,15 @@ on:
     branches: [main]
     paths:
     - 'code/**'
-    secrets:
-      AZURE_SUBSCRIPTION_ID:
-        required: true
-        description: "Specifies the subscription id of the deployment."
-      TENANT_ID:
-        required: true
-        description: "Specifies the tenant id of the deployment."
-      CLIENT_ID:
-        required: true
-        description: "Specifies the client id."
-      CLIENT_SECRET:
-        required: true
-        description: "Specifies the client secret."
-      DEV_SYNAPSE_WORKSPACE_NAME:
-        required: true
-        description: "Specifies DEV synapse workspace name."
-      DEV_AZURE_RESOURCE_GROUP_NAME:
-        required: true
-        description: "Specifies DEV azure resource group name"
 
 jobs:
   Publish_Artifacts:
-    name: Publish artifacts for dev
+    name: Publish_Artifacts
+    env:
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      TENANT_ID: ${{ secrets.TENANT_ID }}
+      CLIENT_ID: ${{ secrets.CLIENT_ID }}
+      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
     runs-on: ubuntu-latest
     continue-on-error: false
     environment: dev
@@ -58,3 +44,80 @@ jobs:
         with:
            name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
            path: /home/runner/work/udf-synapse/udf-synapse/ExportedArtifacts
+  
+  Deploy_Artifacts_Test_Env:
+    name: Deploy_Artifacts_Test_Env
+    needs: Publish_Artifacts
+    runs-on: ubuntu-latest
+    continue-on-error: false
+    environment: test
+
+    steps:
+      # Check Out Repository
+      - name: Check Out Repository
+        id: checkout_repository
+        uses: actions/checkout@v2
+      
+      - name: Azure Login
+        id: azure_login
+        uses: azure/login@v1
+        with:
+          creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
+          enable-AzPSSession: true
+
+      # Install Required Modules
+      - name: Install Required Modules
+        id: install_modules
+        run: |
+          Set-PSRepository PSGallery -InstallationPolicy Trusted
+          Install-Module Az -ErrorAction Stop
+        shell: pwsh
+        working-directory: ${{ github.workspace }}/code/Scripts
+
+        # Synapse Pre-Processing Step
+      - name: Synapse Pre-Processing Step
+        id: synapse_preprocessing
+        run: |
+          ./SynapseRolloutPreprocessing.ps1 `
+            -SubscriptionId "${{ secrets.AZURE_SUBSCRIPTION_ID }}" `
+            -SynapseWorkspaceName "${{ secrets.TEST_SYNAPSE_WORKSPACE_NAME }}" `
+            -CheckPastDaysOfPipelineRuns 1
+        shell: pwsh
+        working-directory: ${{ github.workspace }}/code/Scripts
+
+      # Deploy Synapse Artifacts
+      - name: Deploy Synapse Artifacts
+        id: deployment_synapse
+        uses: azure/synapse-workspace-deployment@V1.7.0
+        with:
+          TargetWorkspaceName: ${{ secrets.TEST_SYNAPSE_WORKSPACE_NAME }}
+          TemplateFile: ${{ github.workspace }}/${{ inputs.source_synapse_workspace_name }}/TemplateForWorkspace.json
+          ParametersFile: ${{ github.workspace }}/code/synapseParameters/param.test.json
+          # ArtifactsFolder:
+          operation: "deploy"
+          deployManagedPrivateEndpoint: true
+          # OverrideArmParameters:
+          DeleteArtifactsNotInTemplate: false
+          Environment: "Azure Public"
+          resourceGroup: ${{ secrets.TEST_AZURE_RESOURCE_GROUP_NAME }}
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          tenantId: ${{ secrets.TENANT_ID }}          
+          clientId: ${{ secrets.CLIENT_ID }}
+          clientSecret: ${{ secrets.CLIENT_SECRET }}
+          managedIdentity: false
+
+      # Synapse Post-Processing Step
+      - name: Synapse Post-Processing Step
+        id: synapse_postprocessing
+        run: |
+          ./SynapseRolloutPostprocessing.ps1 `
+            -SubscriptionId "${{ secrets.AZURE_SUBSCRIPTION_ID }}" `
+            -SynapseWorkspaceName "${{ secrets.TEST_SYNAPSE_WORKSPACE_NAME }}" `
+            -TriggerNames "${{ steps.synapse_preprocessing.outputs.triggerNames }}"
+        shell: pwsh
+        working-directory: ${{ github.workspace }}/code/Scripts
+
+      # Log out from Azure
+      - name: 'Log out from Azure'
+        run: |
+          az logout
