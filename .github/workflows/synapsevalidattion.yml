@@ -48,7 +48,7 @@ jobs:
       # Validate Synapse Artifacts
       - name: Validate Synapse Artifacts
         id: validation_synapse
-        uses: azure/synapse-workspace-deployment@release-1.0
+        uses: azure/synapse-workspace-deployment@V1.7.0
         with:
           TargetWorkspaceName: ${{ inputs.source_synapse_workspace_name }}
           ArtifactsFolder: ${{ github.workspace }}/code/synapse
