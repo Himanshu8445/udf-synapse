@@ -1,0 +1,400 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "synw-udf-dlz-dv-eu2-02"
+		},
+		"LS_MSQ_MYSTRENGTH_connectionString": {
+			"value": "Server=10.7.35.167;Port=3306;Database=rstrength;User=svc-udf-dev-ro;SSLMode=1;UseSystemTrustStore=1"
+		},
+		"LS_MSQ_PERSON_REGISTRY_MM_connectionString": {
+			"value": "Server=memmaster-dev.cluster-cysfc9cgurk1.us-east-1.rds.amazonaws.com;Port=3306;Database=member_master;User=svc-udf-dev-ro;SSLMode=1;UseSystemTrustStore=1"
+		},
+		"LS_MSQ_TDOC_CORE_EDS_connectionString": {
+			"value": "Server=10.47.51.190;Port=3306;Database=teladoc_eds;User=svc-udf-dev-ro;SSLMode=1;UseSystemTrustStore=1"
+		},
+		"LS_MYSQ_LIVONGO_connectionString": {
+			"value": "Server=10.9.32.79;Port=3306;Database=livongo;User=svc-udf-dev-ro;SSLMode=1;UseSystemTrustStore=1"
+		},
+		"LS_SQL_ADVANCED_MEDICAL_connectionString": {
+			"value": "Integrated Security=False;Data Source=10.0.0.44;Initial Catalog=AMSalesforceBackup_DEV;User ID=svc-udf-dev-ro"
+		},
+		"LS_SQL_ALTERA_EMR_SUNRISE_connectionString": {
+			"value": "Integrated Security=False;Data Source=10.47.51.196;Initial Catalog=TEL1_DEV_snapshot;User ID=svc-udf-dev-ro"
+		},
+		"LS_SQL_ASCEND_TOE_MARKETING_connectionString": {
+			"value": "Integrated Security=False;Data Source=10.0.154.97;Initial Catalog=DW_DEV;User ID=svc-udf-dev-ro"
+		},
+		"LS_SQL_CRM_HUB_connectionString": {
+			"value": "Integrated Security=False;Data Source=10.0.0.44;Initial Catalog=TDCRMHub_DEV;User ID=svc-udf-dev-ro"
+		},
+		"LS_SQL_EMS_BOOST_connectionString": {
+			"value": "Integrated Security=False;Data Source=10.0.0.44;Initial Catalog=SalesforceBackup_DEV;User ID=svc-udf-dev-ro"
+		},
+		"LS_SQL_MASTER_LU_connectionString": {
+			"value": "Integrated Security=False;Data Source=10.0.154.97;Initial Catalog=MASTER_LU;User ID=svc-udf-dev-ro"
+		},
+		"synsp01_udf_raw_all_dev_eu2_01_accountKey": {
+			"value": ""
+		},
+		"synw-udf-dlz-dv-eu2-01-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synw-udf-dlz-dv-eu2-02.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"Tr_Raw_Inbound_properties_typeProperties_scope": {
+			"value": "/subscriptions/a558da3e-9a1f-4dff-b494-ccb7ba8dc73c/resourceGroups/rg-udf-dlz-st-dv-eu2-01/providers/Microsoft.Storage/storageAccounts/studfrawalldeveu201"
+		},
+		"Tr_TestEventDriven_properties_typeProperties_scope": {
+			"value": "/subscriptions/a558da3e-9a1f-4dff-b494-ccb7ba8dc73c/resourceGroups/rg-udf-dlz-st-dv-eu2-01/providers/Microsoft.Storage/storageAccounts/studfrawalldeveu201"
+		},
+		"DS_ADLS_RawInbound_properties_linkedServiceName_reference": {
+			"value": "synw-udf-dlz-dv-eu2-02-WorkspaceDefaultStorage"
+		},
+		"DS_ADLS_RawInbound_Binary_properties_linkedServiceName_reference": {
+			"value": "synsp01_udf_raw_all_dev_eu2_01"
+		},
+		"DS_ADLS_RawProcessed_properties_linkedServiceName_reference": {
+			"value": "synw-udf-dlz-dv-eu2-02-WorkspaceDefaultStorage"
+		},
+		"DelimitedText1_properties_linkedServiceName_reference": {
+			"value": "synw-udf-dlz-dv-eu2-02-WorkspaceDefaultStorage"
+		},
+		"DelimitedText2_properties_linkedServiceName_reference": {
+			"value": "synw-udf-dlz-dv-eu2-02-WorkspaceDefaultStorage"
+		},
+		"DrugBank_properties_linkedServiceName_reference": {
+			"value": "synsp01_udf_raw_all_dev_eu2_01"
+		},
+		"DurgBank_properties_linkedServiceName_reference": {
+			"value": "ls_drug_bank"
+		},
+		"LS_ADBX_DLZ_DV_EU2_01_properties_typeProperties_domain": {
+			"value": "https://adb-5598717330097684.4.azuredatabricks.net"
+		},
+		"LS_ADBX_DLZ_DV_EU2_01_properties_typeProperties_authentication": {
+			"value": "MSI"
+		},
+		"LS_ADBX_DLZ_DV_EU2_01_properties_typeProperties_workspaceResourceId": {
+			"value": "/subscriptions/a558da3e-9a1f-4dff-b494-ccb7ba8dc73c/resourceGroups/rg-udf-dlz-shd-dv-eu2-01/providers/Microsoft.Databricks/workspaces/dbw-udf-dlz-dv-eu2-01"
+		},
+		"LS_ADBX_DLZ_DV_EU2_01_properties_typeProperties_existingClusterId": {
+			"value": "0306-200949-fu27tl1o"
+		},
+		"LS_KV_UDF_DMZ_DV_EU2_01_properties_typeProperties_baseUrl": {
+			"value": "https://kv-udf-dmz-dv-eu2-01.vault.azure.net/"
+		},
+		"LS_MSQ_MYSTRENGTH_properties_typeProperties_connectionString": {
+			"value": "Server=10.7.35.167;Port=3306;Database=rstrength;User=svc-udf-dev-ro;SSLMode=1;UseSystemTrustStore=1"
+		},
+		"LS_MSQ_MYSTRENGTH_properties_typeProperties_password": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_KV_UDF_DMZ_DV_EU2_01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "synw-udf-dlz-dv-eu2-01-dev-db-pw"
+			}
+		},
+		"LS_MSQ_PERSON_REGISTRY_MM_properties_typeProperties_connectionString": {
+			"value": "Server=memmaster-dev.cluster-cysfc9cgurk1.us-east-1.rds.amazonaws.com;Port=3306;Database=member_master;User=svc-udf-dev-ro;SSLMode=1;UseSystemTrustStore=1"
+		},
+		"LS_MSQ_PERSON_REGISTRY_MM_properties_typeProperties_password": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_KV_UDF_DMZ_DV_EU2_01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "synw-udf-dlz-dv-eu2-01-dev-db-pw"
+			}
+		},
+		"LS_MSQ_TDOC_CORE_EDS_properties_typeProperties_connectionString": {
+			"value": "Server=10.47.51.190;Port=3306;Database=teladoc_eds;User=svc-udf-dev-ro;SSLMode=1;UseSystemTrustStore=1"
+		},
+		"LS_MSQ_TDOC_CORE_EDS_properties_typeProperties_password": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_KV_UDF_DMZ_DV_EU2_01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "synw-udf-dlz-dv-eu2-01-dev-db-pw"
+			}
+		},
+		"LS_MYSQ_LIVONGO_properties_typeProperties_connectionString": {
+			"value": "Server=10.9.32.79;Port=3306;Database=livongo;User=svc-udf-dev-ro;SSLMode=1;UseSystemTrustStore=1"
+		},
+		"LS_MYSQ_LIVONGO_properties_typeProperties_password": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_KV_UDF_DMZ_DV_EU2_01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "synw-udf-dlz-dv-eu2-01-dev-db-pw"
+			}
+		},
+		"LS_REST_QUALTRICS_properties_typeProperties_url": {
+			"value": "https://iad1.qualtrics.com/API/v3"
+		},
+		"LS_REST_QUALTRICS_properties_typeProperties_enableServerCertificateValidation": {
+			"value": true
+		},
+		"LS_REST_QUALTRICS_properties_typeProperties_authenticationType": {
+			"value": "Anonymous"
+		},
+		"LS_REST_QUALTRICS_properties_typeProperties_authHeaders": {
+			"value": {
+				"X-API-Key": {
+					"type": "AzureKeyVaultSecret",
+					"store": {
+						"referenceName": "LS_KV_UDF_DMZ_DV_EU2_01",
+						"type": "LinkedServiceReference"
+					},
+					"secretName": "qualtrics-api-dev-token"
+				}
+			}
+		},
+		"LS_SQL_ADVANCED_MEDICAL_properties_typeProperties_connectionString": {
+			"value": "Integrated Security=False;Data Source=10.0.0.44;Initial Catalog=AMSalesforceBackup_DEV;User ID=svc-udf-dev-ro"
+		},
+		"LS_SQL_ADVANCED_MEDICAL_properties_typeProperties_password": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_KV_UDF_DMZ_DV_EU2_01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "synw-udf-dlz-dv-eu2-01-dev-db-pw"
+			}
+		},
+		"LS_SQL_ADVANCED_MEDICAL_properties_typeProperties_alwaysEncryptedSettings": {
+			"value": {
+				"alwaysEncryptedAkvAuthType": "ManagedIdentity"
+			}
+		},
+		"LS_SQL_ALTERA_EMR_SUNRISE_properties_typeProperties_connectionString": {
+			"value": "Integrated Security=False;Data Source=10.47.51.196;Initial Catalog=TEL1_DEV_snapshot;User ID=svc-udf-dev-ro"
+		},
+		"LS_SQL_ALTERA_EMR_SUNRISE_properties_typeProperties_password": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_KV_UDF_DMZ_DV_EU2_01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "synw-udf-dlz-dv-eu2-01-dev-db-pw"
+			}
+		},
+		"LS_SQL_ALTERA_EMR_SUNRISE_properties_typeProperties_alwaysEncryptedSettings": {
+			"value": {
+				"alwaysEncryptedAkvAuthType": "ManagedIdentity"
+			}
+		},
+		"LS_SQL_ASCEND_TOE_MARKETING_properties_typeProperties_connectionString": {
+			"value": "Integrated Security=False;Data Source=10.0.154.97;Initial Catalog=DW_DEV;User ID=svc-udf-dev-ro"
+		},
+		"LS_SQL_ASCEND_TOE_MARKETING_properties_typeProperties_password": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_KV_UDF_DMZ_DV_EU2_01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "synw-udf-dlz-dv-eu2-01-dev-db-pw"
+			}
+		},
+		"LS_SQL_ASCEND_TOE_MARKETING_properties_typeProperties_alwaysEncryptedSettings": {
+			"value": {
+				"alwaysEncryptedAkvAuthType": "ManagedIdentity"
+			}
+		},
+		"LS_SQL_CRM_HUB_properties_typeProperties_connectionString": {
+			"value": "Integrated Security=False;Data Source=10.0.0.44;Initial Catalog=TDCRMHub_DEV;User ID=svc-udf-dev-ro"
+		},
+		"LS_SQL_CRM_HUB_properties_typeProperties_password": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_KV_UDF_DMZ_DV_EU2_01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "synw-udf-dlz-dv-eu2-01-dev-db-pw"
+			}
+		},
+		"LS_SQL_CRM_HUB_properties_typeProperties_alwaysEncryptedSettings": {
+			"value": {
+				"alwaysEncryptedAkvAuthType": "ManagedIdentity"
+			}
+		},
+		"LS_SQL_EMS_BOOST_properties_typeProperties_connectionString": {
+			"value": "Integrated Security=False;Data Source=10.0.0.44;Initial Catalog=SalesforceBackup_DEV;User ID=svc-udf-dev-ro"
+		},
+		"LS_SQL_EMS_BOOST_properties_typeProperties_password": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_KV_UDF_DMZ_DV_EU2_01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "synw-udf-dlz-dv-eu2-01-dev-db-pw"
+			}
+		},
+		"LS_SQL_EMS_BOOST_properties_typeProperties_alwaysEncryptedSettings": {
+			"value": {
+				"alwaysEncryptedAkvAuthType": "ManagedIdentity"
+			}
+		},
+		"LS_SQL_MASTER_LU_properties_typeProperties_connectionString": {
+			"value": "Integrated Security=False;Data Source=10.0.154.97;Initial Catalog=MASTER_LU;User ID=svc-udf-dev-ro"
+		},
+		"LS_SQL_MASTER_LU_properties_typeProperties_password": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_KV_UDF_DMZ_DV_EU2_01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "synw-udf-dlz-dv-eu2-01-dev-db-pw"
+			}
+		},
+		"LS_SQL_MASTER_LU_properties_typeProperties_alwaysEncryptedSettings": {
+			"value": {
+				"alwaysEncryptedAkvAuthType": "ManagedIdentity"
+			}
+		},
+		"kv_udf_dmz_dv_eu2_01_properties_typeProperties_baseUrl": {
+			"value": "https://kv-udf-dmz-dv-eu2-01.vault.azure.net/"
+		},
+		"ls_drug_bank_properties_typeProperties_url": {
+			"value": "https://portal.drugbankplus.com/downloads/drugbank_sql/latest"
+		},
+		"ls_drug_bank_properties_typeProperties_enableServerCertificateValidation": {
+			"value": false
+		},
+		"ls_drug_bank_properties_typeProperties_authenticationType": {
+			"value": "Anonymous"
+		},
+		"ls_drug_bank_properties_typeProperties_authHeaders": {
+			"value": {
+				"Authorization": {
+					"type": "SecureString",
+					"value": "**********"
+				}
+			}
+		},
+		"synsp01_udf_raw_all_dev_eu2_01_properties_typeProperties_blobEndpointUri": {
+			"value": "https://studfrawalldeveu201.dfs.core.windows.net/"
+		},
+		"synsp01_udf_raw_npii_dev_eu2_03_properties_typeProperties_blobEndpointUri": {
+			"value": "https://studfrawnpiideveu203.dfs.core.windows.net/"
+		},
+		"synw-udf-dlz-dv-eu2-01-WorkspaceDefaultSqlServer_properties_typeProperties_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synw-udf-dlz-dv-eu2-02.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"synw-udf-dlz-dv-eu2-01-WorkspaceDefaultStorage_properties_typeProperties_blobEndpointUri": {
+			"value": "https://studfdlzsynwdveu205.dfs.core.windows.net"
+		},
+		"SQL script 1_properties_content_currentConnection_databaseName": {
+			"value": "dbo"
+		},
+		"SQL script 1_properties_content_currentConnection_poolName": {
+			"value": "Built-in"
+		},
+		"SQL script 2_properties_content_currentConnection_databaseName": {
+			"value": "master"
+		},
+		"SQL script 2_properties_content_currentConnection_poolName": {
+			"value": "Built-in"
+		},
+		"SQL script 3_properties_content_currentConnection_databaseName": {
+			"value": "dbo"
+		},
+		"SQL script 3_properties_content_currentConnection_poolName": {
+			"value": "Built-in"
+		},
+		"Ingestion_framework_metadata_scripts_properties_bigDataPool_bigDataPoolReference": {
+			"value": "testpool"
+		},
+		"Notebook 2_properties_bigDataPool_bigDataPoolReference": {
+			"value": "testpool"
+		},
+		"Notebook_TestEventDriven_properties_bigDataPool_bigDataPoolReference": {
+			"value": "testpool"
+		},
+		"read_data_from_sqlserver_properties_bigDataPool_bigDataPoolReference": {
+			"value": "testpool"
+		},
+		"test_git_sync_properties_bigDataPool_bigDataPoolReference": {
+			"value": "testpool"
+		},
+		"AzureBlobStorage759_properties_managedPrivateEndpointPrivateLinkResourceId": {
+			"value": "/subscriptions/a558da3e-9a1f-4dff-b494-ccb7ba8dc73c/resourceGroups/rg-udf-dlz-st-dv-eu2-01/providers/Microsoft.Storage/storageAccounts/studfrawalldeveu201"
+		},
+		"AzureBlobStorage759_properties_managedPrivateEndpointsFqdns": {
+			"value": [
+				"studfrawalldeveu201.blob.core.windows.net"
+			]
+		},
+		"AzureDataLakeStorage26_properties_managedPrivateEndpointPrivateLinkResourceId": {
+			"value": "/subscriptions/a558da3e-9a1f-4dff-b494-ccb7ba8dc73c/resourceGroups/rg-udf-dmz-mon-dv-eu2-01/providers/Microsoft.Storage/storageAccounts/stvmudflwdveu201"
+		},
+		"LS_AzureDBX_properties_managedPrivateEndpointPrivateLinkResourceId": {
+			"value": "/subscriptions/a558da3e-9a1f-4dff-b494-ccb7ba8dc73c/resourceGroups/rg-udf-dlz-shd-dv-eu2-01/providers/Microsoft.Databricks/workspaces/dbw-udf-dlz-dv-eu2-01"
+		},
+		"LS_AzureDBX_properties_managedPrivateEndpointsFqdns": {
+			"value": [
+				"adb-5598717330097684.4.azuredatabricks.net"
+			]
+		},
+		"mpe_adls_raw_properties_managedPrivateEndpointPrivateLinkResourceId": {
+			"value": "/subscriptions/a558da3e-9a1f-4dff-b494-ccb7ba8dc73c/resourceGroups/rg-udf-dlz-st-dv-eu2-01/providers/Microsoft.Storage/storageAccounts/studfrawpiideveu202"
+		},
+		"mpe_adls_raw_properties_managedPrivateEndpointsFqdns": {
+			"value": [
+				"studfrawpiideveu202.dfs.core.windows.net"
+			]
+		},
+		"studfrawalldeveu201_managed_pe_adls_properties_managedPrivateEndpointPrivateLinkResourceId": {
+			"value": "/subscriptions/a558da3e-9a1f-4dff-b494-ccb7ba8dc73c/resourceGroups/rg-udf-dlz-st-dv-eu2-01/providers/Microsoft.Storage/storageAccounts/studfrawalldeveu201"
+		},
+		"studfrawalldeveu201_managed_pe_adls_properties_managedPrivateEndpointsFqdns": {
+			"value": [
+				"studfrawalldeveu201.dfs.core.windows.net"
+			]
+		},
+		"studfrawnpiideveu203_managed_pe_adls_properties_managedPrivateEndpointPrivateLinkResourceId": {
+			"value": "/subscriptions/a558da3e-9a1f-4dff-b494-ccb7ba8dc73c/resourceGroups/rg-udf-dlz-st-dv-eu2-01/providers/Microsoft.Storage/storageAccounts/studfrawnpiideveu203"
+		},
+		"studfrawnpiideveu203_managed_pe_adls_properties_managedPrivateEndpointsFqdns": {
+			"value": [
+				"studfrawnpiideveu203.dfs.core.windows.net"
+			]
+		},
+		"synapse-ws-sql--synw-udf-dlz-dv-eu2-01_properties_managedPrivateEndpointPrivateLinkResourceId": {
+			"value": "/subscriptions/a558da3e-9a1f-4dff-b494-ccb7ba8dc73c/resourceGroups/rg-udf-dlz-shd-dv-eu2-01/providers/Microsoft.Synapse/workspaces/synw-udf-dlz-dv-eu2-02"
+		},
+		"synapse-ws-sql--synw-udf-dlz-dv-eu2-01_properties_managedPrivateEndpointsFqdns": {
+			"value": [
+				"synw-udf-dlz-dv-eu2-02.b5557491-e6c3-4fd7-8871-59c1057d1980.sql.azuresynapse.net"
+			]
+		},
+		"synapse-ws-sqlOnDemand--synw-udf-dlz-dv-eu2-01_properties_managedPrivateEndpointPrivateLinkResourceId": {
+			"value": "/subscriptions/a558da3e-9a1f-4dff-b494-ccb7ba8dc73c/resourceGroups/rg-udf-dlz-shd-dv-eu2-01/providers/Microsoft.Synapse/workspaces/synw-udf-dlz-dv-eu2-02"
+		},
+		"synapse-ws-sqlOnDemand--synw-udf-dlz-dv-eu2-01_properties_managedPrivateEndpointsFqdns": {
+			"value": [
+				"synw-udf-dlz-dv-eu2-02-ondemand.b5557491-e6c3-4fd7-8871-59c1057d1980.sql.azuresynapse.net"
+			]
+		},
+		"synw-udf-dlz-synw-dv-eu2-01-AzureDatalakeStorage_properties_managedPrivateEndpointPrivateLinkResourceId": {
+			"value": "/subscriptions/a558da3e-9a1f-4dff-b494-ccb7ba8dc73c/resourceGroups/rg-udf-dlz-shd-dv-eu2-01/providers/Microsoft.Storage/storageAccounts/studfdlzsynwdveu205"
+		},
+		"synw-udf-dlz-synw-dv-eu2-01-AzureDatalakeStorage_properties_managedPrivateEndpointsFqdns": {
+			"value": [
+				"studfdlzsynwdveu205.dfs.core.windows.net"
+			]
+		}
+	}
+}
