@@ -57,6 +57,38 @@
             "type": "string",
             "defaultValue": "Built-in"
         },
+        "SQL script 5_properties_content_currentConnection_databaseName": {
+            "type": "string",
+            "defaultValue": "master"
+        },
+        "SQL script 5_properties_content_currentConnection_poolName": {
+            "type": "string",
+            "defaultValue": "Built-in"
+        },
+        "SQL script 6_properties_content_currentConnection_databaseName": {
+            "type": "string",
+            "defaultValue": "master"
+        },
+        "SQL script 6_properties_content_currentConnection_poolName": {
+            "type": "string",
+            "defaultValue": "Built-in"
+        },
+        "SQL script 7_properties_content_currentConnection_databaseName": {
+            "type": "string",
+            "defaultValue": "master"
+        },
+        "SQL script 7_properties_content_currentConnection_poolName": {
+            "type": "string",
+            "defaultValue": "Built-in"
+        },
+        "SQL script 8_properties_content_currentConnection_databaseName": {
+            "type": "string",
+            "defaultValue": "master"
+        },
+        "SQL script 8_properties_content_currentConnection_poolName": {
+            "type": "string",
+            "defaultValue": "Built-in"
+        },
         "Notebook 1_properties_bigDataPool_bigDataPoolReference": {
             "type": "string",
             "defaultValue": "devpool"
@@ -220,6 +252,86 @@
                     "currentConnection": {
                         "databaseName": "[parameters('SQL script 4_properties_content_currentConnection_databaseName')]",
                         "poolName": "[parameters('SQL script 4_properties_content_currentConnection_poolName')]"
+                    },
+                    "resultLimit": 5000
+                },
+                "type": "SqlQuery"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('workspaceName'), '/SQL script 5')]",
+            "type": "Microsoft.Synapse/workspaces/sqlscripts",
+            "apiVersion": "2019-06-01-preview",
+            "properties": {
+                "content": {
+                    "query": "Hello",
+                    "metadata": {
+                        "language": "sql"
+                    },
+                    "currentConnection": {
+                        "databaseName": "[parameters('SQL script 5_properties_content_currentConnection_databaseName')]",
+                        "poolName": "[parameters('SQL script 5_properties_content_currentConnection_poolName')]"
+                    },
+                    "resultLimit": 5000
+                },
+                "type": "SqlQuery"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('workspaceName'), '/SQL script 6')]",
+            "type": "Microsoft.Synapse/workspaces/sqlscripts",
+            "apiVersion": "2019-06-01-preview",
+            "properties": {
+                "content": {
+                    "query": "Hi",
+                    "metadata": {
+                        "language": "sql"
+                    },
+                    "currentConnection": {
+                        "databaseName": "[parameters('SQL script 6_properties_content_currentConnection_databaseName')]",
+                        "poolName": "[parameters('SQL script 6_properties_content_currentConnection_poolName')]"
+                    },
+                    "resultLimit": 5000
+                },
+                "type": "SqlQuery"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('workspaceName'), '/SQL script 7')]",
+            "type": "Microsoft.Synapse/workspaces/sqlscripts",
+            "apiVersion": "2019-06-01-preview",
+            "properties": {
+                "content": {
+                    "query": "hi",
+                    "metadata": {
+                        "language": "sql"
+                    },
+                    "currentConnection": {
+                        "databaseName": "[parameters('SQL script 7_properties_content_currentConnection_databaseName')]",
+                        "poolName": "[parameters('SQL script 7_properties_content_currentConnection_poolName')]"
+                    },
+                    "resultLimit": 5000
+                },
+                "type": "SqlQuery"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('workspaceName'), '/SQL script 8')]",
+            "type": "Microsoft.Synapse/workspaces/sqlscripts",
+            "apiVersion": "2019-06-01-preview",
+            "properties": {
+                "content": {
+                    "query": "Hello",
+                    "metadata": {
+                        "language": "sql"
+                    },
+                    "currentConnection": {
+                        "databaseName": "[parameters('SQL script 8_properties_content_currentConnection_databaseName')]",
+                        "poolName": "[parameters('SQL script 8_properties_content_currentConnection_poolName')]"
                     },
                     "resultLimit": 5000
                 },
