@@ -50,7 +50,7 @@ jobs:
         with:
           inlineScript: |
             Set-AzContext "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
-          #azPSVersion: "latest"
+          azPSVersion: "latest"
       
       # - name: Download artifacts
       #   uses: actions/download-artifact@v3
