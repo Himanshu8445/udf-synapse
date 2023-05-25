@@ -43,7 +43,7 @@ jobs:
         uses: azure/login@v1
         with:
           creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
-          enable-AzPSSession: true
+          #enable-AzPSSession: true
       
       # - name: "Get working Az Context with PowerShell action"
       #   uses: azure/powershell@v1
@@ -62,15 +62,15 @@ jobs:
       #   working-directory: ${{ github.workspace }}/code/Scripts
 
         # Synapse Pre-Processing Step
-      - name: Synapse Pre-Processing Step
-        id: synapse_preprocessing
-        run: |
-          ./SynapseRolloutPreprocessing.ps1 `
-            -SubscriptionId "${{ secrets.AZURE_SUBSCRIPTION_ID }}" `
-            -SynapseWorkspaceName "${{ secrets.PP_SYNAPSE_WORKSPACE_NAME }}" `
-            -CheckPastDaysOfPipelineRuns 1
-        shell: pwsh
-        working-directory: ${{ github.workspace }}/code/Scripts
+      # - name: Synapse Pre-Processing Step
+      #   id: synapse_preprocessing
+      #   run: |
+      #     ./SynapseRolloutPreprocessing.ps1 `
+      #       -SubscriptionId "${{ secrets.AZURE_SUBSCRIPTION_ID }}" `
+      #       -SynapseWorkspaceName "${{ secrets.PP_SYNAPSE_WORKSPACE_NAME }}" `
+      #       -CheckPastDaysOfPipelineRuns 1
+      #   shell: pwsh
+      #   working-directory: ${{ github.workspace }}/code/Scripts
 
       # Deploy Synapse Artifacts
       - name: Deploy Synapse Artifacts
