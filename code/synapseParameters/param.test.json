@@ -43,6 +43,30 @@
         "SQL script 4_properties_content_currentConnection_poolName": {
             "value": "Built-in"
         },
+        "SQL script 5_properties_content_currentConnection_databaseName": {
+            "value": "master"
+        },
+        "SQL script 5_properties_content_currentConnection_poolName": {
+            "value": "Built-in"
+        },
+        "SQL script 6_properties_content_currentConnection_databaseName": {
+            "value": "master"
+        },
+        "SQL script 6_properties_content_currentConnection_poolName": {
+            "value": "Built-in"
+        },
+        "SQL script 7_properties_content_currentConnection_databaseName": {
+            "value": "master"
+        },
+        "SQL script 7_properties_content_currentConnection_poolName": {
+            "value": "Built-in"
+        },
+        "SQL script 8_properties_content_currentConnection_databaseName": {
+            "value": "master"
+        },
+        "SQL script 8_properties_content_currentConnection_poolName": {
+            "value": "Built-in"
+        },
         "Notebook 1_properties_bigDataPool_bigDataPoolReference": {
             "value": "testpool"
         },

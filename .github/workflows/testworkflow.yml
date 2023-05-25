@@ -45,11 +45,11 @@ jobs:
           creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
           #enable-AzPSSession: true
       
-      - name: Download artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
-          path: ${{ github.workspace }}/code/synapse
+      # - name: Download artifacts
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
+      #     path: ${{ github.workspace }}/code/synapse
 
       # # Install Required Modules
       # - name: Install Required Modules
@@ -77,7 +77,7 @@ jobs:
         uses: azure/synapse-workspace-deployment@V1.7.0
         with:
           TargetWorkspaceName: ${{ secrets.TEST_SYNAPSE_WORKSPACE_NAME }}
-          TemplateFile: ${{ github.workspace }}/code/synapse/TemplateForWorkspace.json
+          TemplateFile: https://github.com/Himanshu8445/udf-synapse/blob/publish/TemplateForWorkspace.json
           ParametersFile: ${{ github.workspace }}/code/synapseParameters/param.test.json
           # ArtifactsFolder:
           operation: "deploy"
