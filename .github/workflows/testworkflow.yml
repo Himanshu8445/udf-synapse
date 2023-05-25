@@ -78,7 +78,7 @@ jobs:
         uses: azure/synapse-workspace-deployment@V1.7.0
         with:
           TargetWorkspaceName: ${{ secrets.TEST_SYNAPSE_WORKSPACE_NAME }}
-          TemplateFile: https://github.com/Himanshu8445/udf-synapse/blob/publish/TemplateForWorkspace.json
+          TemplateFile: "https://github.com/Himanshu8445/udf-synapse/blob/publish/TemplateForWorkspace.json"
           ParametersFile: ${{ github.workspace }}/code/synapseParameters/param.test.json
           # ArtifactsFolder:
           operation: "deploy"
