@@ -51,6 +51,6 @@ jobs:
           commit_message: Automated Change
           branch: publish
           commit_options: '--no-verify --signoff'
-          commit_author: Author <actions@github.com>
+          commit_author: Himanshu8445
           status_options: '--untracked-files=no'
           skip_dirty_check: true
