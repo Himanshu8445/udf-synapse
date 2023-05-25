@@ -47,7 +47,7 @@ jobs:
       
       - name: Assign user
         env:
-        PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
             curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -X POST -d '{"assignees": ["Himanshu8445"]}' 
             https://api.github.com/repos/udf-synapse/issues/${PR_NUMBER}/assignees
