@@ -44,20 +44,3 @@ jobs:
         with:
            name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
            path: /home/azureadmin/actions-runner/_work/udf-synapse/udf-synapse/ExportedArtifacts
-      
-      # - name: Assign user
-      #   env:
-      #     PR_NUMBER: ${{ github.event.pull_request.number }}
-      #   run: |
-      #       curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -X POST -d '{"assignees": ["Himanshu8445"]}' 
-      #       https://api.github.com/repos/udf-synapse/issues/${PR_NUMBER}/assignees
-
-      # - name: Commit changes
-      #   uses: stefanzweifel/git-auto-commit-action@v4
-      #   with:
-      #     commit_message: Automated Change
-      #     branch: publish
-      #     commit_options: '--no-verify --signoff'
-      #     commit_author: Himanshu8445
-      #     status_options: '--untracked-files=no'
-      #     skip_dirty_check: true
