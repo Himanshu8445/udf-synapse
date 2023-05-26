@@ -1,0 +1,28 @@
+name: Upload Artifacts
+on:
+  workflow_call:
+    secrets:
+      DEV_SYNAPSE_WORKSPACE_NAME:
+        required: true
+        description: "Specifies the DEV_SYNAPSE_WORKSPACE_NAME."
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Perform your build or generate the artifacts
+      # ...
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
+          path: /home/runner/work/udf-synapse/udf-synapse/ExportedArtifacts
+
+  # Define a workflow output to share the artifacts
+  outputs:
+    artifact-path: /home/runner/work/udf-synapse/udf-synapse/ExportedArtifacts

@@ -55,10 +55,11 @@ jobs:
         working-directory: ${{ github.workspace }}/code/Scripts
 
       - name: Download Artifacts
-        uses: actions/download-artifact@v2.1.1
-        with:
-          name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
-          path: ${{ github.workspace }}/code/synapse
+        uses: ./.github/workflows/downloadartifacts.yml
+        # uses: actions/download-artifact@v2.1.1
+        # with:
+        #   name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
+        #   path: ${{ github.workspace }}/code/synapse
 
         # Synapse Pre-Processing Step
       - name: Synapse Pre-Processing Step
