@@ -19,6 +19,7 @@ jobs:
       DEV_SYNAPSE_WORKSPACE_NAME: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
   Deploy_Artifacts_Test_Env:
     name: Deploy_Artifacts_Test_Env
+    needs: Publish_Artifacts
     uses: ./.github/workflows/testworkflow.yml
     secrets:
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
