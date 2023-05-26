@@ -67,6 +67,12 @@
         "SQL script 8_properties_content_currentConnection_poolName": {
             "value": "Built-in"
         },
+        "SQL script 9_properties_content_currentConnection_databaseName": {
+            "value": "master"
+        },
+        "SQL script 9_properties_content_currentConnection_poolName": {
+            "value": "Built-in"
+        },
         "Notebook 1_properties_bigDataPool_bigDataPoolReference": {
             "value": "testpool"
         },
