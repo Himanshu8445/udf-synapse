@@ -41,6 +41,8 @@ jobs:
 
       - name: Upload Synapse template as artifacts
         uses: ./.github/workflows/uploadartifacts.yml
+        secrets:
+          DEV_SYNAPSE_WORKSPACE_NAME: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
         # uses: actions/upload-artifact@v3.1.2
         # with:
         #    name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
