@@ -28,7 +28,7 @@ on:
 jobs:
   deployment:
     name: Deployment to pre-prod
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     continue-on-error: false
     environment: preprod
 
@@ -43,23 +43,22 @@ jobs:
         uses: azure/login@v1
         with:
           creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
-          #enable-AzPSSession: true
+          enable-AzPSSession: true
       
-      # - name: "Get working Az Context with PowerShell action"
-      #   uses: azure/powershell@v1
-      #   with:
-      #     inlineScript: |
-      #       Set-AzContext "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
-      #     azPSVersion: "latest"
-      
-      # # Install Required Modules
-      # - name: Install Required Modules
-      #   id: install_modules
-      #   run: |
-      #     Set-PSRepository PSGallery -InstallationPolicy Trusted
-      #     Install-Module Az -ErrorAction Stop
-      #   shell: pwsh
-      #   working-directory: ${{ github.workspace }}/code/Scripts
+      # Install Required Modules
+      - name: Install Required Modules
+        id: install_modules
+        run: |
+          Set-PSRepository PSGallery -InstallationPolicy Trusted
+          Install-Module Az -ErrorAction Stop
+        shell: pwsh
+        working-directory: ${{ github.workspace }}/code/Scripts
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2.1.1
+        with:
+          name: ${{ secrets.DEV_SYNAPSE_WORKSPACE_NAME }}
+          path: ${{ github.workspace }}/code/synapse
 
         # Synapse Pre-Processing Step
       - name: Synapse Pre-Processing Step
@@ -78,7 +77,7 @@ jobs:
         uses: azure/synapse-workspace-deployment@V1.7.0
         with:
           TargetWorkspaceName: ${{ secrets.PP_SYNAPSE_WORKSPACE_NAME }}
-          TemplateFile: ${{ github.workspace }}/path/to/publish/TemplateForWorkspace.json
+          TemplateFile: ${{ github.workspace }}/code/synapse/TemplateForWorkspace.json
           ParametersFile: ${{ github.workspace }}/code/synapseParameters/param.preprod.json
           # ArtifactsFolder:
           operation: "deploy"

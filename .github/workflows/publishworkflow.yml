@@ -1,19 +1,29 @@
-name: Synapse Artifacts Publish
+name: Publish
 
 on:
-  push:
-    branches: [main]
-    paths:
-    - 'code/synapse**'
-
+  workflow_call:
+    secrets: 
+      CLIENT_ID:
+        required: true
+        description: "Specifies the client ID."
+      AZURE_SUBSCRIPTION_ID:
+        required: true
+        description: "Specifies the subscription id of the deployment."
+      TENANT_ID:
+        required: true
+        description: "Specifies the tenant id of the deployment."
+      CLIENT_SECRET:
+        required: true
+        description: "Specifies the azure credentials for deployment."
+      DEV_AZURE_RESOURCE_GROUP_NAME:
+        required: true
+        description: "Specifies the DEV synapse workspace RG name for deployment."
+      DEV_SYNAPSE_WORKSPACE_NAME:
+        required: true
+        description: "Specifies the DEV synapse workspace name for deployment."
 jobs:
   Publish_Artifacts:
     name: Publish_Artifacts
-    env:
-      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      TENANT_ID: ${{ secrets.TENANT_ID }}
-      CLIENT_ID: ${{ secrets.CLIENT_ID }}
-      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
     runs-on: ubuntu-latest
     continue-on-error: false
     environment: dev
